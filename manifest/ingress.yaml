@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-allforwins
+  namespace: allforwins
+spec:
+  rules:
+    - host: allforwins.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: allforwins-web
+                port:
+                  number: 3000
+    - host: www.allforwins.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: allforwins-web
+                port:
+                  number: 3000
+    - host: admin.allforwins.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: allforwins-admin
+                port:
+                  number: 3000
+    - host: api.allforwins.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: allforwins-api
+                port:
+                  number: 3000
+    - host: socket.allforwins.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: allforwins-socket
+                port:
+                  number: 3000
+  ingressClassName: nginx
