@@ -1,58 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-allforwins
-  namespace: allforwins
+  name: ingress-demo-web
+  namespace: demo
 spec:
   rules:
-    - host: allforwins.com
+    - host: stromcash.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: allforwins-web
+                name: demo-web
                 port:
                   number: 3000
-    - host: www.allforwins.com
+    - host: www.stromcash.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: allforwins-web
-                port:
-                  number: 3000
-    - host: admin.allforwins.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: allforwins-admin
-                port:
-                  number: 3000
-    - host: api.allforwins.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: allforwins-api
-                port:
-                  number: 3000
-    - host: socket.allforwins.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: allforwins-socket
+                name: demo-web
                 port:
                   number: 3000
   ingressClassName: nginx
